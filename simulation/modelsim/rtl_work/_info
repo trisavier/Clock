@@ -1,0 +1,25 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\Digital IC Design\Watch\simulation\modelsim
+vclock
+!i10b 1
+!s100 7:ZDm97gYn?h6DGDQG1;;2
+I@:b18@YNVN=G8j^F^4zhn0
+VD2HoB9J<>>n7Y]4W945`G3
+Z1 dD:\Digital IC Design\Watch\simulation\modelsim
+w1745847768
+8D:/Digital IC Design/Watch/clock.v
+FD:/Digital IC Design/Watch/clock.v
+L0 1
+OV;L;10.1d;51
+r1
+!s85 0
+31
+!s108 1745848267.961000
+!s107 D:/Digital IC Design/Watch/clock.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Digital IC Design/Watch|D:/Digital IC Design/Watch/clock.v|
+!s101 -O0
+o-vlog01compat -work work -O0
+!s92 -vlog01compat -work work {+incdir+D:/Digital IC Design/Watch} -O0
