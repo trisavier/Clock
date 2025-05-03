@@ -5,11 +5,11 @@ cModel Technology
 Z0 dD:\Digital IC Design\Watch\simulation\modelsim
 vclock
 !i10b 1
-!s100 7:ZDm97gYn?h6DGDQG1;;2
-I@:b18@YNVN=G8j^F^4zhn0
-VD2HoB9J<>>n7Y]4W945`G3
+!s100 2EokJEanWFF3Y0KVWbG;A0
+I2PKVW6a2JjD<_Y5[H[Y441
+VnW>K59FZ5Hm`k5?3D7zL40
 Z1 dD:\Digital IC Design\Watch\simulation\modelsim
-w1745847768
+w1746284386
 8D:/Digital IC Design/Watch/clock.v
 FD:/Digital IC Design/Watch/clock.v
 L0 1
@@ -17,7 +17,7 @@ OV;L;10.1d;51
 r1
 !s85 0
 31
-!s108 1745848267.961000
+!s108 1746285218.431000
 !s107 D:/Digital IC Design/Watch/clock.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Digital IC Design/Watch|D:/Digital IC Design/Watch/clock.v|
 !s101 -O0

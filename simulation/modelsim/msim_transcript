@@ -1,68 +1,113 @@
 # Reading C:/altera/13.0sp1/modelsim_ase/tcl/vsim/pref.tcl 
-# do clock_run_msim_gate_verilog.do 
-# if {[file exists gate_work]} {
-# 	vdel -lib gate_work -all
+# do clock_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
 # }
-# vlib gate_work
-# vmap work gate_work
+# vlib rtl_work
+# vmap work rtl_work
 # Copying C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # ** Warning: Copied C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
 #          Updated modelsim.ini.
 # 
-# vlog -vlog01compat -work work +incdir+. {clock.vo}
+# vlog -vlog01compat -work work +incdir+D:/Digital\ IC\ Design/Watch {D:/Digital IC Design/Watch/clock.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module clock
 # 
 # Top level modules:
 # 	clock
 # 
-# Load canceled
-vlog clock.v
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# ** Error: (vlog-7) Failed to open design unit file "clock.v" in read mode.
-# 
-# No such file or directory. (errno = ENOENT)
-# C:/altera/13.0sp1/modelsim_ase/win32aloem/vlog failed.
+ls
+# clock.sft                       clock_run_msim_rtl_verilog.do       clock_run_msim_rtl_verilog.do.bak4  msim_transcript  
+# clock.vo                        clock_run_msim_rtl_verilog.do.bak   clock_v.sdo                         rtl_work         
+# clock_fast.vo                   clock_run_msim_rtl_verilog.do.bak1  clock_v_fast.sdo                                     
+# clock_modelsim.xrf              clock_run_msim_rtl_verilog.do.bak2  gate_work                                            
+# clock_run_msim_gate_verilog.do  clock_run_msim_rtl_verilog.do.bak3  modelsim.ini                                         
 cd ..
 # reading C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini
 cd ..
-cd ..
+# reading modelsim.ini
 ls
-# 1. Digital Integrated Circuits_A Design Perspective (2002) - Jan M. Rabaey.pdf  addersubtractor.v.bak  
-# ALTERA_DE2.zip                                                                  cocotb                 
-# Chap2.pdf                                                                       db                     
-# DE2_pin_assignments.csv                                                         driver                 
-# ETRI-0.5u-CMOS-MPW-DK-Example--ALU8                                             incremental_db         
-# ETRI-0.5um-CMOS-MPW-Std-Cell-DK                                                 mux.qpf                
-# Lab5_1_tut_simulation_verilog.pdf                                               mux.qsf                
-# Lab5_2_tut_timing_verilog.pdf                                                   mux.qsf.bak            
-# Makefile                                                                        mux.qws                
-# OpenROAD                                                                        mux.v                  
-# Ri                                                                              mux.v.bak              
-# Ripple-Carry-Adder                                                              my_design.sv           
-# Timting                                                                         output_files           
-# Watch                                                                           test_my_design.py      
-# addersubtractor.v                                                               test_runner.py         
-cd Watch
-ls
-# clock.qpf  clock.v      clock_description.txt            clock_tb.v      db              output_files  
-# clock.qsf  clock.v.bak  clock_nativelink_simulation.rpt  clock_tb.v.bak  incremental_db  simulation    
+# .gitignore  clock.v.bak                      clock_tb.vcd    simulation  
+# README.md   clock_description.txt            db              vsim.wlf    
+# clock.qpf   clock_nativelink_simulation.rpt  incremental_db  work        
+# clock.qsf   clock_tb.v                       modelsim.ini                
+# clock.v     clock_tb.v.bak                   output_files                
 vlog clock.v
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# ** Error: (vlog-19) Failed to access library 'work' at "work".
+# -- Compiling module clock
 # 
-# No such file or directory. (errno = ENOENT)
-# ** Error: Library work not found.
-# ** Error: Verilog Compiler exiting
+# Top level modules:
+# 	clock
+vlog clock_tb.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module clock_tb
+# 
+# Top level modules:
+# 	clock_tb
+vsim clock_tb
+# vsim clock_tb 
+# Loading work.clock_tb
+# Loading work.clock
+add wave *
+run 1000000ms
+# === TEST START ===
+# Test: Main Clock Counting
+# Test: Set Time
+# Test: Stopwatch Start/Stop/Reset
+# Test: Timer Set/Start/Stop
+# Timer Done: 1
+# === TEST END ===
+# ** Note: $finish    : clock_tb.v(125)
+#    Time: 29 sec  Iteration: 0  Instance: /clock_tb
+# 1
+# Break in Module clock_tb at clock_tb.v line 125
+vlog clock.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module clock
+# 
+# Top level modules:
+# 	clock
+vsim clock_tb
+# vsim clock_tb 
+# Loading work.clock_tb
+# Loading work.clock
+# ** Error: (vsim-3063) clock_tb.v(47): Port 'set_timer_hours' not found in the connected module (12th connection).
+# 
+#         Region: /clock_tb/uut
+# ** Error: (vsim-3063) clock_tb.v(47): Port 'set_timer_minutes' not found in the connected module (13th connection).
+# 
+#         Region: /clock_tb/uut
+# ** Error: (vsim-3063) clock_tb.v(47): Port 'set_timer_seconds' not found in the connected module (14th connection).
+# 
+#         Region: /clock_tb/uut
+# Error loading design
+vlog clock.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module clock
+# 
+# Top level modules:
+# 	clock
+vsim clock_tb
+# vsim clock_tb 
+# Loading work.clock_tb
+# Loading work.clock
+# ** Error: (vsim-3063) clock_tb.v(47): Port 'set_timer_hours' not found in the connected module (12th connection).
+# 
+#         Region: /clock_tb/uut
+# ** Error: (vsim-3063) clock_tb.v(47): Port 'set_timer_minutes' not found in the connected module (13th connection).
+# 
+#         Region: /clock_tb/uut
+# ** Error: (vsim-3063) clock_tb.v(47): Port 'set_timer_seconds' not found in the connected module (14th connection).
+# 
+#         Region: /clock_tb/uut
+# Error loading design
+vlog clock_tb.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module clock_tb
+# ** Error: clock_tb.v(105): (vlog-2730) Undefined variable: 'inc_timer_seconds'.
+# 
 # C:/altera/13.0sp1/modelsim_ase/win32aloem/vlog failed.
-vlib work
-vmap work work
-# Copying C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
-# Modifying modelsim.ini
-# ** Warning: Copied C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
-#          Updated modelsim.ini.
-
 vlog clock.v
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module clock
@@ -80,354 +125,15 @@ vsim clock_tb
 # Loading work.clock_tb
 # Loading work.clock
 add wave *
-run 100000ms
-# Break in Module clock_tb at clock_tb.v line 33
-vlog clock.v
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module clock
-# 
-# Top level modules:
-# 	clock
-clock_tb.v
-# couldn't execute ".\clock_tb.v": no such file or directory
-vlog clock_tb.v
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module clock_tb
-# 
-# Top level modules:
-# 	clock_tb
-vlog clock_tb.v
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module clock_tb
-# 
-# Top level modules:
-# 	clock_tb
-vsim clock_tb
-# vsim clock_tb 
-# Loading work.clock_tb
-# Loading work.clock
-# ** Warning: (vsim-3017) clock_tb.v(17): [TFMPC] - Too few port connections. Expected 9, found 5.
-# 
-#         Region: /clock_tb/uut
-# ** Warning: (vsim-3722) clock_tb.v(17): [TFMPC] - Missing connection for port 'set_time_mode'.
-# 
-# ** Warning: (vsim-3722) clock_tb.v(17): [TFMPC] - Missing connection for port 'set_minutes'.
-# 
-# ** Warning: (vsim-3722) clock_tb.v(17): [TFMPC] - Missing connection for port 'set_hours'.
-# 
-# ** Warning: (vsim-3722) clock_tb.v(17): [TFMPC] - Missing connection for port 'carry'.
-# 
-add wave *
-run 100000ms
-# Break in Module clock_tb at clock_tb.v line 33
-run 100000ms
-vsim clock_tb
-# vsim clock_tb 
-# Loading work.clock_tb
-# Loading work.clock
-# ** Warning: (vsim-3017) clock_tb.v(17): [TFMPC] - Too few port connections. Expected 9, found 5.
-# 
-#         Region: /clock_tb/uut
-# ** Warning: (vsim-3722) clock_tb.v(17): [TFMPC] - Missing connection for port 'set_time_mode'.
-# 
-# ** Warning: (vsim-3722) clock_tb.v(17): [TFMPC] - Missing connection for port 'set_minutes'.
-# 
-# ** Warning: (vsim-3722) clock_tb.v(17): [TFMPC] - Missing connection for port 'set_hours'.
-# 
-# ** Warning: (vsim-3722) clock_tb.v(17): [TFMPC] - Missing connection for port 'carry'.
-# 
-vlog clock_tb.v
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module clock_tb
-# 
-# Top level modules:
-# 	clock_tb
-vsim clock_tb
-# vsim clock_tb 
-# Loading work.clock_tb
-# Loading work.clock
-add wave *
-run 40000ms
-
-vlog clock_tb.v
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module clock_tb
-# 
-# Top level modules:
-# 	clock_tb
-vsim clock_tb
-# vsim clock_tb 
-# Loading work.clock_tb
-# Loading work.clock
-add wave *
-run 40000ms
-# Time: 0, Seconds: 0, Minutes: 0, Hours: 0, Carry: 0
-
-# WARNING: No extended dataflow license exists
-vlog clock_tb.v
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module clock_tb
-# 
-# Top level modules:
-# 	clock_tb
-vsim clock_tb
-# vsim clock_tb 
-# Loading work.clock_tb
-# Loading work.clock
-add wave *
-run 40000ms
-# Time: 0, Seconds: 0, Minutes: 0, Hours: 0, Carry: 0
-# Time: 1500, Seconds: 1, Minutes: 0, Hours: 0, Carry: 0
-# Time: 2500, Seconds: 2, Minutes: 0, Hours: 0, Carry: 0
-# Time: 3500, Seconds: 3, Minutes: 0, Hours: 0, Carry: 0
-# Time: 4500, Seconds: 4, Minutes: 0, Hours: 0, Carry: 0
-# Time: 5500, Seconds: 5, Minutes: 0, Hours: 0, Carry: 0
-# Time: 6500, Seconds: 0, Minutes: 45, Hours: 12, Carry: 0
-# Time: 7500, Seconds: 1, Minutes: 45, Hours: 12, Carry: 0
-# Time: 8500, Seconds: 2, Minutes: 45, Hours: 12, Carry: 0
-# Time: 9500, Seconds: 3, Minutes: 45, Hours: 12, Carry: 0
-# Time: 10500, Seconds: 4, Minutes: 45, Hours: 12, Carry: 0
-# Time: 11500, Seconds: 5, Minutes: 45, Hours: 12, Carry: 0
-# Time: 12500, Seconds: 6, Minutes: 45, Hours: 12, Carry: 0
-# Time: 13500, Seconds: 7, Minutes: 45, Hours: 12, Carry: 0
-# Time: 14500, Seconds: 8, Minutes: 45, Hours: 12, Carry: 0
-# Time: 15500, Seconds: 9, Minutes: 45, Hours: 12, Carry: 0
-# Time: 16500, Seconds: 10, Minutes: 45, Hours: 12, Carry: 0
-# Time: 17500, Seconds: 11, Minutes: 45, Hours: 12, Carry: 0
-# Time: 18500, Seconds: 12, Minutes: 45, Hours: 12, Carry: 0
-# Time: 19500, Seconds: 13, Minutes: 45, Hours: 12, Carry: 0
-# Time: 20500, Seconds: 14, Minutes: 45, Hours: 12, Carry: 0
-# Time: 21500, Seconds: 15, Minutes: 45, Hours: 12, Carry: 0
-# Time: 22500, Seconds: 16, Minutes: 45, Hours: 12, Carry: 0
-# Time: 23500, Seconds: 17, Minutes: 45, Hours: 12, Carry: 0
-# Time: 24500, Seconds: 18, Minutes: 45, Hours: 12, Carry: 0
-# Time: 25500, Seconds: 19, Minutes: 45, Hours: 12, Carry: 0
-# Time: 26500, Seconds: 20, Minutes: 45, Hours: 12, Carry: 0
-# Break in Module clock_tb at clock_tb.v line 60
-
-vlog clock_tb.v
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module clock_tb
-# 
-# Top level modules:
-# 	clock_tb
-vsim clock_tb
-# vsim clock_tb 
-# Loading work.clock_tb
-# Loading work.clock
-add wave *
-run 100000ms
-# Time: 0, Seconds: 0, Minutes: 0, Hours: 0, Carry: 0
-vlog clock_tb.v
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module clock_tb
-# 
-# Top level modules:
-# 	clock_tb
-vsim clock_tb
-# vsim clock_tb 
-# Loading work.clock_tb
-# Loading work.clock
-add wave *
-run 40000ms
-# Time: 0, Seconds: 0, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0
-# Time: 500, Seconds: 0, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1
-# Time: 1000, Seconds: 0, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0
-# Time: 1500, Seconds: 1, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1
-# Time: 2000, Seconds: 1, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0
-# Time: 2500, Seconds: 2, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1
-# Time: 3000, Seconds: 2, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0
-# Time: 3500, Seconds: 3, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1
-# Time: 4000, Seconds: 3, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0
-# Time: 4500, Seconds: 4, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1
-# Time: 5000, Seconds: 4, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0
-# Time: 5500, Seconds: 5, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1
-# Time: 6000, Seconds: 5, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0
-# Time: 6500, Seconds: 0, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 7000, Seconds: 0, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 7500, Seconds: 1, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 8000, Seconds: 1, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 8500, Seconds: 2, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 9000, Seconds: 2, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 9500, Seconds: 3, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 10000, Seconds: 3, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 10500, Seconds: 4, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 11000, Seconds: 4, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 11500, Seconds: 5, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 12000, Seconds: 5, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 12500, Seconds: 6, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 13000, Seconds: 6, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 13500, Seconds: 7, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 14000, Seconds: 7, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 14500, Seconds: 8, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 15000, Seconds: 8, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 15500, Seconds: 9, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 16000, Seconds: 9, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 16500, Seconds: 10, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 17000, Seconds: 10, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 17500, Seconds: 11, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 18000, Seconds: 11, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 18500, Seconds: 12, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 19000, Seconds: 12, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 19500, Seconds: 13, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 20000, Seconds: 13, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 20500, Seconds: 14, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 21000, Seconds: 14, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 21500, Seconds: 15, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 22000, Seconds: 15, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 22500, Seconds: 16, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 23000, Seconds: 16, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 23500, Seconds: 17, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 24000, Seconds: 17, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 24500, Seconds: 18, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 25000, Seconds: 18, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 25500, Seconds: 19, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Time: 26000, Seconds: 19, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0
-# Time: 26500, Seconds: 20, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1
-# Break in Module clock_tb at clock_tb.v line 60
-
-vlog clock_tb.v
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module clock_tb
-# 
-# Top level modules:
-# 	clock_tb
-vsim clock_tb
-# vsim clock_tb 
-# Loading work.clock_tb
-# Loading work.clock
-add wave *
-run 40000ms
-# Time: 0, Seconds: 0, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 500, Seconds: 0, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 1000, Seconds: 0, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 1500, Seconds: 1, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 2000, Seconds: 1, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 2500, Seconds: 2, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 3000, Seconds: 2, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 3500, Seconds: 3, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 4000, Seconds: 3, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 4500, Seconds: 4, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 5000, Seconds: 4, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 5500, Seconds: 5, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 6000, Seconds: 5, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 1, set_minutes: 45, set_hours: 12
-# Time: 6500, Seconds: 0, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 1, set_minutes: 45, set_hours: 12
-# Time: 7000, Seconds: 0, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 7500, Seconds: 1, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 8000, Seconds: 1, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 8500, Seconds: 2, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 9000, Seconds: 2, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 9500, Seconds: 3, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 10000, Seconds: 3, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 10500, Seconds: 4, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 11000, Seconds: 4, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 11500, Seconds: 5, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 12000, Seconds: 5, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 12500, Seconds: 6, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 13000, Seconds: 6, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 13500, Seconds: 7, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 14000, Seconds: 7, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 14500, Seconds: 8, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 15000, Seconds: 8, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 15500, Seconds: 9, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 16000, Seconds: 9, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 16500, Seconds: 10, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 17000, Seconds: 10, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 17500, Seconds: 11, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 18000, Seconds: 11, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 18500, Seconds: 12, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 19000, Seconds: 12, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 19500, Seconds: 13, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 20000, Seconds: 13, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 20500, Seconds: 14, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 21000, Seconds: 14, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 21500, Seconds: 15, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 22000, Seconds: 15, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 22500, Seconds: 16, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 23000, Seconds: 16, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 23500, Seconds: 17, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 24000, Seconds: 17, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 24500, Seconds: 18, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 25000, Seconds: 18, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 25500, Seconds: 19, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 26000, Seconds: 19, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 26500, Seconds: 20, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Break in Module clock_tb at clock_tb.v line 60
-vlog clock_tb.v
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module clock_tb
-# 
-# Top level modules:
-# 	clock_tb
-vsim clock_tb.v
-# OpenFile clock_tb.v 
-vsim clock_tb
-# vsim clock_tb 
-# Loading work.clock_tb
-# Loading work.clock
-add wave *
-run 20000ms
-# Time: 0, Seconds: 0, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 500, Seconds: 0, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 1000, Seconds: 0, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 1500, Seconds: 1, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 2000, Seconds: 1, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 2500, Seconds: 2, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 3000, Seconds: 2, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 3500, Seconds: 3, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 4000, Seconds: 3, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 4500, Seconds: 4, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 5000, Seconds: 4, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 5500, Seconds: 5, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes:  0, set_hours:  0
-# Time: 6000, Seconds: 5, Minutes: 0, Hours: 0, Carry: 0, clk_1Hz: 0, set_time_mode: 1, set_minutes: 45, set_hours: 12
-# Time: 6500, Seconds: 0, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 1, set_minutes: 45, set_hours: 12
-# Time: 7000, Seconds: 0, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 7500, Seconds: 1, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 8000, Seconds: 1, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 8500, Seconds: 2, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 9000, Seconds: 2, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 9500, Seconds: 3, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 10000, Seconds: 3, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 10500, Seconds: 4, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 11000, Seconds: 4, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 11500, Seconds: 5, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 12000, Seconds: 5, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 12500, Seconds: 6, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 13000, Seconds: 6, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 13500, Seconds: 7, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 14000, Seconds: 7, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 14500, Seconds: 8, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 15000, Seconds: 8, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 15500, Seconds: 9, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 16000, Seconds: 9, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 16500, Seconds: 10, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 17000, Seconds: 10, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 17500, Seconds: 11, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 18000, Seconds: 11, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 18500, Seconds: 12, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 19000, Seconds: 12, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 0, set_time_mode: 0, set_minutes: 45, set_hours: 12
-# Time: 19500, Seconds: 13, Minutes: 45, Hours: 12, Carry: 0, clk_1Hz: 1, set_time_mode: 0, set_minutes: 45, set_hours: 12
-vlog clock_tb.v
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module clock_tb
-# 
-# Top level modules:
-# 	clock_tb
-vsim clock_tb
-# vsim clock_tb 
-# Loading work.clock_tb
-# Loading work.clock
-add wave *
-run 20000ms
-vlog clock_tb.v
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module clock_tb
-# 
-# Top level modules:
-# 	clock_tb
-vsim clock_tb
-# vsim clock_tb 
-# Loading work.clock_tb
-# Loading work.clock
-add wave *
-run 100000ms
+run 1000000ms
+# === TEST START ===
+# Test: Main Clock Counting
+# Test: Set Time
+# Test: Stopwatch Start/Stop/Reset
+# Test: Timer Set/Start/Stop
+# Timer Done: 1
+# === TEST END ===
+# ** Note: $finish    : clock_tb.v(116)
+#    Time: 31 sec  Iteration: 0  Instance: /clock_tb
+# 1
+# Break in Module clock_tb at clock_tb.v line 116
