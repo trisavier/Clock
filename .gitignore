@@ -5,3 +5,4 @@ work/
 vsim.wlf
 *.rpt
 *.bak
+clock_tb.vcd
