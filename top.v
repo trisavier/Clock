@@ -1,5 +1,4 @@
 // Top-level module for DE2 board with clock, stopwatch, and timer functions
-
 module top(
     input CLOCK_50,
     input [17:0] SW,
@@ -15,15 +14,18 @@ module top(
     wire clk_1Hz;
     wire reset = ~KEY[0];
 
-    // Divide clock from 50MHz to 1Hz
+// Chia xung nhịp từ 50MHz thành 1Hz
     clock_divider clkdiv(
         .clk_50MHz(CLOCK_50),
         .reset(reset),
         .clk_1Hz(clk_1Hz)
     );
 
-    wire [5:0] seconds, minutes;
-    wire [4:0] hours;
+    wire [5:0] seconds, minutes, stopwatch_seconds, stopwatch_minutes, timer_seconds, timer_minutes;
+    wire [4:0] hours, stopwatch_hours, timer_hours;
+
+    wire is_stopwatch_running, is_timer_running, timer_done;
+    wire carry;
 
     clock clock_inst(
         .clk_1Hz(clk_1Hz),
@@ -46,29 +48,52 @@ module top(
         .seconds(seconds),
         .minutes(minutes),
         .hours(hours),
-        .stopwatch_seconds(),
-        .stopwatch_minutes(),
-        .stopwatch_hours(),
-        .timer_seconds(),
-        .timer_minutes(),
-        .timer_hours(),
-        .is_stopwatch_running(),
-        .is_timer_running(),
-        .timer_done(),
-        .carry()
+        .stopwatch_seconds(stopwatch_seconds),
+        .stopwatch_minutes(stopwatch_minutes),
+        .stopwatch_hours(stopwatch_hours),
+        .timer_seconds(timer_seconds),
+        .timer_minutes(timer_minutes),
+        .timer_hours(timer_hours),
+        .is_stopwatch_running(is_stopwatch_running),
+        .is_timer_running(is_timer_running),
+        .timer_done(timer_done),
+        .carry(carry)
     );
 
-    // Display clock time on HEX displays
-    seg7 decoder0(.in(seconds % 10), .out(HEX0));
-    seg7 decoder1(.in(seconds / 10), .out(HEX1));
-    seg7 decoder2(.in(minutes % 10), .out(HEX2));
-    seg7 decoder3(.in(minutes / 10), .out(HEX3));
-    seg7 decoder4(.in(hours % 10), .out(HEX4));
-    seg7 decoder5(.in(hours / 10), .out(HEX5));
+    // MUX hiển thị theo chế độ
+    reg [5:0] disp_seconds, disp_minutes;
+    reg [4:0] disp_hours;
+
+    always @(*) begin
+        if (SW[1]) begin
+            // Stopwatch mode
+            disp_seconds = stopwatch_seconds;
+            disp_minutes = stopwatch_minutes;
+            disp_hours   = stopwatch_hours;
+        end else if (SW[2]) begin
+            // Timer mode
+            disp_seconds = timer_seconds;
+            disp_minutes = timer_minutes;
+            disp_hours   = timer_hours;
+        end else begin
+            // Clock mode
+            disp_seconds = seconds;
+            disp_minutes = minutes;
+            disp_hours   = hours;
+        end
+    end
+
+// Hiển thị thời gian đã chọn trên màn hình HEX
+    seg7 decoder0(.in(disp_seconds % 10), .out(HEX0));
+    seg7 decoder1(.in(disp_seconds / 10), .out(HEX1));
+    seg7 decoder2(.in(disp_minutes % 10), .out(HEX2));
+    seg7 decoder3(.in(disp_minutes / 10), .out(HEX3));
+    seg7 decoder4(.in(disp_hours % 10), .out(HEX4));
+    seg7 decoder5(.in(disp_hours / 10), .out(HEX5));
 
 endmodule
 
-// Clock Divider 50MHz -> 1Hz
+// Bộ chia xung nhịp 50MHz -> 1Hz
 module clock_divider(
     input clk_50MHz,
     input reset,
@@ -88,7 +113,7 @@ module clock_divider(
     end
 endmodule
 
-// 7-segment decoder (0–9 only)
+// Led 7 đoạn (chỉ 0–9)
 module seg7(
     input [3:0] in,
     output reg [6:0] out
