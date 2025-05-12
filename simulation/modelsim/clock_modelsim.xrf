@@ -1,7 +1,7 @@
 vendor_name = ModelSim
-source_file = 1, D:/Digital IC Design/Watch/clock.v
-source_file = 1, D:/Digital IC Design/Watch/clock_tb.v
-source_file = 1, D:/Digital IC Design/Watch/db/clock.cbx.xml
+source_file = 1, D:/VKU/Nam 2/Ki 2 24 25/THIET KE IC SO/Cuoi ky/TimeClockVerilog/clock.v
+source_file = 1, D:/VKU/Nam 2/Ki 2 24 25/THIET KE IC SO/Cuoi ky/TimeClockVerilog/top.v
+source_file = 1, D:/VKU/Nam 2/Ki 2 24 25/THIET KE IC SO/Cuoi ky/TimeClockVerilog/db/clock.cbx.xml
 design_name = clock
 instance = comp, \Equal8~0 , Equal8~0, clock, 1
 instance = comp, \timer_seconds[0]~8 , timer_seconds[0]~8, clock, 1

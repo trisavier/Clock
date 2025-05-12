@@ -24,9 +24,9 @@
 (DELAYFILE
   (SDFVERSION "2.1")
   (DESIGN "clock")
-  (DATE "05/03/2025 22:38:44")
+  (DATE "05/12/2025 09:45:13")
   (VENDOR "Altera")
-  (PROGRAM "Quartus II 32-bit")
+  (PROGRAM "Quartus II 64-Bit")
   (VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition")
   (DIVIDER .)
   (TIMESCALE 1 ps)

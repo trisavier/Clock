@@ -123,7 +123,6 @@ end else begin
     seconds <= seconds + 1;
 end
 
-
             // ==== Stopwatch counting ====
             if (stopwatch_mode && stopwatch_running) begin
                 if (stopwatch_seconds == 6'd59) begin
